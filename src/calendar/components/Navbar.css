@@ -1,0 +1,70 @@
+/* === NAVBAR BASE === */
+.custom-navbar {
+    backdrop-filter: blur(12px);
+    /* border-radius: 16px; */
+    /* margin: 12px; */
+    transition: all 0.3s ease;
+    font-family: 'Inter', system-ui, sans-serif;
+    border: 1px solid transparent;
+}
+
+/* === LIGHT THEME === */
+.navbar-light-theme {
+    background: rgba(255, 255, 255, 0.7);
+    color: #1e293b;
+    border-color: rgba(226, 232, 240, 0.7);
+    box-shadow: 0 2px 10px rgba(148, 163, 184, 0.2);
+}
+
+/* === DARK THEME === */
+.navbar-dark-theme {
+    background: rgb(30, 41, 59);
+    color: #f1f5f9;
+    border-color: rgba(71, 85, 105, 0.5);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+}
+
+/* === LOGO === */
+.logo-circle {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #38bdf8, #3b82f6);
+    color: white;
+    font-size: 1.1rem;
+    box-shadow: 0 2px 6px rgba(59, 130, 246, 0.3);
+}
+
+/* === BOTÓN SALIR === */
+.btn-logout {
+    background: transparent;
+    border: 1px solid transparent;
+    color: inherit;
+    font-weight: 500;
+    padding: 6px 14px;
+    border-radius: 10px;
+    transition: all 0.2s ease;
+}
+
+.navbar-light-theme .btn-logout:hover {
+    background: rgba(59, 130, 246, 0.1);
+    border-color: rgba(59, 130, 246, 0.2);
+    color: #1e3a8a;
+}
+
+.navbar-dark-theme .btn-logout:hover {
+    background: rgba(56, 189, 248, 0.1);
+    border-color: rgba(56, 189, 248, 0.3);
+    color: #38bdf8;
+}
+
+/* === BOTÓN CAMBIO DE TEMA === */
+.btn-theme-toggle {
+    /* background: linear-gradient(135deg, #38bdf8, #3b82f6); */
+    border: none;
+    color: white;
+    font-weight: 500;
+    padding: 6px 14px;
+    border-radius: 10px;
+    box-shadow: 0 2px 6px rgba(59, 130, 246, 0.3);
+}

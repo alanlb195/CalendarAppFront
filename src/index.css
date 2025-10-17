@@ -1,0 +1,110 @@
+/* Modal */
+.ReactModalPortal>div {
+  opacity: 0;
+}
+
+.ReactModalPortal .ReactModal__Overlay {
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  transition: opacity .2s ease-in-out;
+  z-index: 999;
+}
+
+.modal-fondo {
+  bottom: 0;
+  left: 0;
+  right: 0;
+  top: 0;
+  position: fixed;
+}
+
+.ReactModalPortal .ReactModal__Overlay--after-open {
+  opacity: 1;
+}
+
+.ReactModalPortal .ReactModal__Overlay--before-close {
+  opacity: 0;
+}
+
+.fab-danger {
+  background-color: #fd0d0d;
+  bottom: 100px;
+  right: 30px;
+  width: 65px;
+  height: 65px;
+}
+
+.fab-primary {
+  background-color: #0d6efd;
+  bottom: 30px;
+  right: 30px;
+  width: 65px;
+  height: 65px;
+}
+
+.fab {
+  position: fixed;
+  border-radius: 50%;
+  font-size: 26px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /* azul Bootstrap */
+  color: #fff;
+  border: none;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.25);
+  cursor: pointer;
+  transition: all 0.25s ease-in-out;
+  z-index: 1000;
+}
+
+/* .fab:hover {
+  transform: scale(1.1);
+  background-color: #0b5ed7;
+  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.3);
+} */
+
+.fab:active {
+  transform: scale(0.95);
+}
+
+@media (max-width: 768px) {
+  .fab {
+    bottom: 20px;
+    right: 20px;
+    width: 55px;
+    height: 55px;
+    font-size: 22px;
+  }
+}
+
+
+
+/* 🔧 Asegura que los DatePicker se estiren correctamente */
+.react-datepicker-wrapper,
+.react-datepicker__input-container,
+.react-datepicker__input-container input {
+  width: 100% !important;
+  display: block;
+}
+
+/* 🎨 Un poco más de estilo para los inputs */
+.react-datepicker__input-container input.form-control {
+  padding: 0.6rem 0.9rem;
+  border-radius: 8px;
+  border: 1px solid #ced4da;
+  box-shadow: none;
+  transition: all 0.2s ease-in-out;
+}
+
+.react-datepicker__input-container input.form-control:focus {
+  border-color: #0d6efd;
+  box-shadow: 0 0 0 0.2rem rgba(13, 110, 253, 0.15);
+}
+
+/* ✨ Un poco de aire entre secciones */
+.modal form .mb-3,
+.modal form .mb-4 {
+  margin-bottom: 1.25rem !important;
+}

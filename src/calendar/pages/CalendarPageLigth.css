@@ -1,0 +1,138 @@
+/* === BASE === */
+body.light .rbc-calendar {
+    background-color: #f9fafb;
+    color: #334155;
+    padding: 1rem;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+    font-family: 'Inter', system-ui, sans-serif;
+    transition: all 0.3s ease;
+}
+
+/* === TOOLBAR === */
+body.light .rbc-toolbar {
+    background: white;
+    border-radius: 12px;
+    padding: 0.75rem 1rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.06);
+}
+
+body.light .rbc-toolbar button {
+    background: #e0f2fe;
+    color: #0369a1;
+    border: none;
+    border-radius: 8px;
+    padding: 6px 12px;
+    margin: 0 4px;
+    cursor: pointer;
+    font-weight: 500;
+    transition: all 0.2s ease;
+}
+
+body.light .rbc-toolbar button:hover {
+    background: #bae6fd;
+    transform: translateY(-1px);
+}
+
+body.light .rbc-toolbar button.rbc-active {
+    background: #38bdf8;
+    color: white;
+}
+
+/* === DÍAS / HEADERS === */
+body.light .rbc-header {
+    background: #f1f5f9;
+    color: #475569;
+    border: none;
+    font-weight: 600;
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    padding: 0.75rem;
+    border-radius: 0;
+    margin-bottom: 2px;
+}
+
+/* === CELDAS DEL CALENDARIO === */
+body.light .rbc-day-bg {
+    background: #ffffff;
+    border-radius: 0;
+    transition: background 0.3s;
+}
+
+body.light .rbc-day-bg:hover {
+    background: #f0f9ff;
+}
+
+/* === DÍA ACTUAL === */
+body.light .rbc-today {
+    background-color: #e0f2fe !important;
+    border-radius: 0;
+    box-shadow: inset 0 0 0 2px #38bdf8;
+}
+
+/* === EVENTOS === */
+body.light .rbc-event {
+    color: #1e3a8a;
+    border: none;
+    border-radius: 8px;
+    padding: 4px 8px;
+    font-weight: 600;
+    font-size: 0.85rem;
+    transition: all 0.2s ease;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
+
+}
+
+body.light .rbc-event:hover {
+    transform: scale(1.02);
+    background: linear-gradient(135deg, #60a5fa, #3b82f6);
+    color: white;
+}
+
+/* === AGENDA VIEW === */
+body.light .rbc-agenda-view {
+    background: #f9fafb;
+    border-radius: 12px;
+    padding: 1rem;
+}
+
+body.light .rbc-agenda-table {
+    background: white;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+    color: #334155;
+}
+
+body.light .rbc-agenda-table thead {
+    background: #f1f5f9;
+    color: #475569;
+}
+
+body.light .rbc-agenda-event-cell {
+    background: #f8fafc;
+    border-bottom: 1px solid #e2e8f0;
+}
+
+/* === SCROLLBARS === */
+body.light .rbc-time-content::-webkit-scrollbar {
+    width: 8px;
+}
+
+body.light .rbc-time-content::-webkit-scrollbar-thumb {
+    background-color: #cbd5e1;
+    border-radius: 10px;
+}
+
+body.light .rbc-time-content::-webkit-scrollbar-thumb:hover {
+    background-color: #94a3b8;
+}
+
+/* === OFF RANGE === */
+body.light .rbc-off-range-bg {
+    background: #f1f5f9;
+    color: #94a3b8;
+}
