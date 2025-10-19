@@ -1,2 +1,2 @@
-export * from './event.interface';
+export * from './event.response';
 export * from './user.interface';

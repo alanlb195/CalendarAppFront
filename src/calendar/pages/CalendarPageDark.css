@@ -85,23 +85,6 @@ body.dark .rbc-event {
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
 }
 
-/* === EVENTOS CON COLORES === */
-body.dark .rbc-event[style*="background-color: #60a5fa"] {
-    background: rgba(96, 165, 250, 0.9);
-}
-
-body.dark .rbc-event[style*="background-color: #a5b4fc"] {
-    background: rgba(165, 180, 252, 0.9);
-}
-
-body.dark .rbc-event[style*="background-color: #86efac"] {
-    background: rgba(134, 239, 172, 0.9);
-}
-
-body.dark .rbc-event[style*="background-color: #fbbf24"] {
-    background: rgba(251, 191, 36, 0.9);
-}
-
 body.dark .rbc-event:hover {
     transform: scale(1.02);
     filter: brightness(1.1);

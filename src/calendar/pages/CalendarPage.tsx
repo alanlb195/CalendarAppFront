@@ -6,7 +6,7 @@ import './CalendarPageDark.css'
 import { Navbar, CalendarEventBox, CalendarModal, FabAddNewEvent } from "../"
 import { localizer, getMessagesES } from '../../helpers/';
 import { useEffect, useState } from 'react';
-import { useUiStore } from '../../hooks';
+import { useAuthStore, useUiStore } from '../../hooks';
 import { useCalendarStore } from '../../hooks/useCalendarStore';
 import { useThemeStore } from '../../hooks/useThemeStore';
 import { FabDeleteEvent } from '../components/FabDeleteEvent'
@@ -15,16 +15,21 @@ import { FabDeleteEvent } from '../components/FabDeleteEvent'
 export const CalendarPage = () => {
 
   const { openDateModal } = useUiStore();
-  const { events, setActiveEvent } = useCalendarStore();
+  const { events, setActiveEvent, startLoadingEvents } = useCalendarStore();
   // console.log('Eventos cargados en el calendario:', events);
   const { currentTheme } = useThemeStore();
   // console.log('Tema actual:', currentTheme);
+  const { user } = useAuthStore();
 
 
   useEffect(() => {
     document.body.classList.remove('light', 'dark');
     document.body.classList.add(currentTheme);
   }, [currentTheme]);
+
+  useEffect(() => {
+    startLoadingEvents();
+  }, []);
 
 
   type Separators = "day" | "week" | "month" | "agenda";
@@ -41,24 +46,29 @@ export const CalendarPage = () => {
     setCurrentDate(newDate);
   };
 
+  const eventStyleGetter = (event: any, start: any, end: any, isSelected: any) => {
+    const isMyEvent = (user?._id === event.user._id);
+    
+    const myColor = '#2563eb';
+    const othersColor = '#6b7280';
 
-  const eventStyleGetter = (
-    // event: any,
-    // start: any,
-    // end: any,
-    // isSelected: any
-  ) => {
-    // console.log({ event, start, end, isSelected });
     const style = {
-      boderRadius: '0px',
-      opacity: 1,
-      color: 'white'
-    }
+      backgroundColor: isMyEvent ? myColor : othersColor,
+      borderRadius: '6px',
+      opacity: isSelected ? 1 : 0.9,
+      color: 'white',
+      border: isSelected ? '2px solid white' : 'none',
+      boxShadow: isSelected
+        ? `0 0 6px ${isMyEvent ? 'rgba(37,99,235,0.6)' : 'rgba(107,114,128,0.6)'}`
+        : '0 1px 3px rgba(0,0,0,0.2)',
+      padding: '2px 6px',
+      fontWeight: 600,
+      textShadow: '0 1px 2px rgba(0,0,0,0.3)',
+    };
 
-    return {
-      style
-    }
-  }
+    return { style };
+  };
+
 
   const handleClick = (event: any) => {
     // console.log('hiciste un click en un evento');
@@ -93,7 +103,8 @@ export const CalendarPage = () => {
           ...event,
           start: new Date(event.start),
           end: new Date(event.end),
-        }))} defaultView={lastView}
+        }))}
+        defaultView={lastView}
         startAccessor="start"
         endAccessor="end"
         style={{ height: 'calc(100vh - 56px)' }}

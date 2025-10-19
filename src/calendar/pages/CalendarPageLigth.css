@@ -88,7 +88,6 @@ body.light .rbc-event {
 
 body.light .rbc-event:hover {
     transform: scale(1.02);
-    background: linear-gradient(135deg, #60a5fa, #3b82f6);
     color: white;
 }
 

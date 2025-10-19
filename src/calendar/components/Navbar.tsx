@@ -1,8 +1,10 @@
+import { useAuthStore } from '../../hooks';
 import { useThemeStore } from '../../hooks/useThemeStore'
 import './Navbar.css'
 
 export const Navbar = () => {
     const { currentTheme, onToggleTheme } = useThemeStore();
+    const { startLogout } = useAuthStore();
     const isDark = currentTheme === 'dark';
 
     return (
@@ -20,7 +22,7 @@ export const Navbar = () => {
 
             {/* Acciones */}
             <div className="d-flex align-items-center">
-                <button className="btn-logout me-3">
+                <button className="btn-logout me-3" onClick={startLogout}>
                     <i className="fas fa-sign-out-alt me-2"></i> Salir
                 </button>
 

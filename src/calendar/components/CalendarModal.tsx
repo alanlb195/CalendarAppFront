@@ -122,7 +122,7 @@ export const CalendarModal = () => {
       overlayClassName="modal-fondo"
     >
       <h2 className="text-center mb-4 fw-bold text-primary">
-        {activeEvent?._id || activeEvent?._id ? 'Editar evento' : 'Nuevo evento'}
+        {activeEvent?.id ? 'Editar evento' : 'Nuevo evento'}
       </h2>
 
       <form onSubmit={onSubmit} className="needs-validation">

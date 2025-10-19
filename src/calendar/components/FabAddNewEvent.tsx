@@ -15,7 +15,6 @@ export const FabAddNewEvent = () => {
             notes: '',
             start: new Date(),
             end: addHours(new Date(), 2),
-            bgColor: '#fafafa',
             user: {
                 _id: '123',
                 name: 'Alan'
