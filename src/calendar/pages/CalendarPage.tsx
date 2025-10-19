@@ -46,9 +46,14 @@ export const CalendarPage = () => {
     setCurrentDate(newDate);
   };
 
-  const eventStyleGetter = (event: any, start: any, end: any, isSelected: any) => {
+  const eventStyleGetter = (
+    event: any,
+    // start: any,
+    // end: any,
+    isSelected: any
+  ) => {
     const isMyEvent = (user?._id === event.user._id);
-    
+
     const myColor = '#2563eb';
     const othersColor = '#6b7280';
 
@@ -85,7 +90,7 @@ export const CalendarPage = () => {
   }
 
   const handleSelectSlot = (slotInfo: any) => {
-    // console.log('Seleccionaste una casilla vacía o rango de casillas:', slotInfo);
+    console.log('Seleccionaste una casilla vacía o rango de casillas:', slotInfo);
     setActiveEvent(null);
   };
 
