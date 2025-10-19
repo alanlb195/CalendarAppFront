@@ -10,7 +10,7 @@ export interface authState {
 }
 
 const initialState: authState = {
-    status: 'unauthenticated',
+    status: 'checking',
     user: undefined,
     errorMessage: undefined,
 }
