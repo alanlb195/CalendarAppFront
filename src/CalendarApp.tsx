@@ -2,6 +2,7 @@ import { Provider } from 'react-redux'
 import { BrowserRouter } from "react-router"
 import { AppRouter } from "./router"
 import { store } from './store'
+import ReloadPrompt from './ReloadPrompt'
 
 
 
@@ -11,6 +12,7 @@ export const CalendarApp = () => {
       <BrowserRouter>
         <AppRouter />
       </BrowserRouter>
+      <ReloadPrompt />
     </Provider>
   )
 }

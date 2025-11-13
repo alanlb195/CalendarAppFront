@@ -7,10 +7,12 @@
     "dev": "vite",
     "build": "tsc -b && vite build",
     "lint": "eslint .",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "sw": "npm run build & npm run preview"
   },
   "dependencies": {
     "@reduxjs/toolkit": "^2.9.0",
+    "@rollup/plugin-replace": "^6.0.3",
     "axios": "^1.12.2",
     "date-fns": "^4.1.0",
     "react": "^19.1.0",
@@ -20,10 +22,13 @@
     "react-modal": "^3.16.3",
     "react-redux": "^9.2.0",
     "react-router": "^7.9.4",
-    "sweetalert2": "^11.26.2"
+    "redux-persist": "^6.0.0",
+    "sweetalert2": "^11.26.2",
+    "vite-plugin-pwa": "^1.1.0"
   },
   "devDependencies": {
     "@eslint/js": "^9.25.0",
+    "@types/node": "^24.10.1",
     "@types/react": "^19.1.2",
     "@types/react-big-calendar": "^1.16.3",
     "@types/react-dom": "^19.1.2",

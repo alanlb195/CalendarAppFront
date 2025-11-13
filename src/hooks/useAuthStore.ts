@@ -1,8 +1,9 @@
 import { useDispatch, useSelector } from "react-redux";
-import { onChecking, clearErrorMessage, onLogin, onLogout, type AppDispatch, type RootState, onLogoutCalendar } from "../store";
+import { onChecking, clearErrorMessage, onLogin, onLogout, type AppDispatch, type RootState, onLogoutCalendar, onOffline } from "../store";
 import { calendarApi } from "../api";
 import type { LoginResponse } from "../shared/interfaces/login.response";
 import type { User } from "../shared/interfaces";
+import { clearSession, getUserFromLocalStorage, saveSession } from '../utils/localStorage.user.data';
 
 export const useAuthStore = () => {
 
@@ -11,6 +12,7 @@ export const useAuthStore = () => {
 
     const setChecking = () => dispatch(onChecking());
     const handleLogin = (user: User) => dispatch(onLogin(user))
+    const handleOffline = (user: User) => dispatch(onOffline(user))
     const handleLogout = (errorMessage: string | undefined) => dispatch(onLogout(errorMessage))
     const handleClearErrorMessage = () => dispatch(clearErrorMessage())
     const logoutCalendar = () => dispatch(onLogoutCalendar());
@@ -25,8 +27,7 @@ export const useAuthStore = () => {
                 email,
                 password,
             });
-
-            localStorage.setItem('token', data.token);
+            saveSession(data);
             handleLogin({ name: data.name, _id: data.uid });
 
             // console.log({ data });
@@ -48,8 +49,7 @@ export const useAuthStore = () => {
                 password,
                 name,
             });
-
-            localStorage.setItem('token', data.token);
+            saveSession(data);
             handleLogin({ name: data.name, _id: data.uid });
 
             // console.log({ data });
@@ -63,7 +63,7 @@ export const useAuthStore = () => {
 
     const startLogout = () => {
         handleLogout(undefined);
-        localStorage.removeItem('token');
+        clearSession();
         logoutCalendar();
     }
 
@@ -78,8 +78,23 @@ export const useAuthStore = () => {
             const { data } = await calendarApi.get<LoginResponse>('/auth/renew');
             localStorage.setItem('token', data.token);
             handleLogin({ name: data.name, _id: data.uid })
-        } catch (error) {
-            localStorage.removeItem('token');
+        } catch (error: any) {
+
+            // No connection, PWA mode
+            if (!navigator.onLine || error.code === 'ERR_NETWORK') {
+                const user = getUserFromLocalStorage();
+                handleOffline(user);
+                return;
+            }
+
+            // Invalid Token
+            if (error.response && error.response.status === 401) {
+                clearSession();
+                handleLogout(undefined);
+                return;
+            }
+            // unknown error
+            clearSession();
             handleLogout(undefined);
         }
 

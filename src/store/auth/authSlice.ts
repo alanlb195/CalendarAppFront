@@ -1,7 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit'
 import type { User } from '../../shared/interfaces'
 
-type AuthStatus = 'authenticated' | 'unauthenticated' | 'checking'
+type AuthStatus = 'authenticated' | 'unauthenticated' | 'checking' | 'offline'
 
 export interface authState {
     status: AuthStatus
@@ -36,11 +36,16 @@ export const authSlice = createSlice({
         },
         clearErrorMessage: (state) => {
             state.errorMessage = undefined;
-        }
+        },
+        onOffline: (state, { payload }) => {
+            state.status = 'offline';
+            state.user = payload;
+            state.errorMessage = undefined;
+        },
     },
 })
 
 // Action creators are generated for each case reducer function
-export const { onChecking, onLogin, onLogout, clearErrorMessage } = authSlice.actions
+export const { onChecking, onLogin, onLogout, clearErrorMessage, onOffline } = authSlice.actions
 
 export default authSlice.reducer
